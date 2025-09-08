@@ -1,0 +1,6 @@
+flask
+pyflakes
+discord
+pynacl
+python-dotenv
+waitress
