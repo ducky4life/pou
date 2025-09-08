@@ -2,7 +2,7 @@
 
 pou is a discord bot to interact with databases and run SQL commands. it is designed for educational purposes and for me to learn sql.
 
-`INSERT INTO` commands automatically starts a transaction. you can commit the changes by specifying the commit parameter in /exec_command or run /commit_changes afterwards. committed database data will be saved across restarts of the bot.
+`INSERT INTO` commands automatically starts a transaction. you can commit the changes by specifying the commit parameter in `/exec_command` or run `/commit_changes` afterwards. committed database data will be saved across restarts of the bot/docker container.
 
 ### features
 
