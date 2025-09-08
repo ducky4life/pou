@@ -52,4 +52,4 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 
 - [x] delete/rename databases
 - [ ] transactions
-- [ ] backup databases
+- [x] backup databases
