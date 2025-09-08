@@ -14,4 +14,4 @@ RUN mkdir databases
 
 WORKDIR /
 
-CMD [ "python", "music.py" ]
+CMD [ "python", "pou.py" ]
