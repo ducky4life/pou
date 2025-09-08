@@ -123,6 +123,13 @@ async def on_message(message: discord.Message):
         if "pou:" in message.content.lower():
             await message.channel.send("i wonder y")
 
+@client.event
+async def on_command_error(ctx, error):
+    channel_id = 1131914463277240361
+    channel = client.get_channel(channel_id)
+    await channel.send(error)
+    await channel.send(error.__traceback__)
+
 
 keep_alive.keep_alive()
 client.run(token)
