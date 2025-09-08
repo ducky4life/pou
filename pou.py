@@ -9,11 +9,14 @@ import sqlite3
 
 intents = discord.Intents.default()
 intents.message_content = True
+db_folder = "databases"
+
+def get_database_path(name):
+    return(f"{db_folder}/{name}.db")
 
 load_dotenv()
 token = os.getenv("POU_TOKEN")
-db_folder = "databases"
-db_connection = sqlite3.connect(f"{db_folder}/default.db")
+db_connection = sqlite3.connect(get_database_path("default"))
 db_cursor = db_connection.cursor()
 
 client = commands.Bot(
@@ -30,7 +33,8 @@ async def on_ready():
 async def connect_database(ctx, database:str):
     global db_connection
     global db_cursor
-    db_connection = sqlite3.connect(f"{db_folder}/{database}.db")
+    db_connection.close()
+    db_connection = sqlite3.connect(get_database_path(database))
     db_cursor = db_connection.cursor()
     await ctx.send(f"connecting to {database}")
 
@@ -73,7 +77,7 @@ async def list_databases(ctx):
 @client.hybrid_command(description="deletes a database")
 async def delete_database(ctx, database:str):
     try:
-        os.remove(f"{db_folder}/{database}.db")
+        os.remove(get_database_path(database))
         await ctx.send(f"ok removed {database}.db")
     except Exception as e:
         await ctx.send(e)
@@ -82,13 +86,26 @@ async def delete_database(ctx, database:str):
 async def rename_database(ctx, original_name:str, new_name:str):
     if original_name and new_name:
         try:
-            os.rename(f"{db_folder}/{original_name}.db", f"{db_folder}/{new_name}.db")
+            os.rename(get_database_path(original_name), get_database_path(new_name))
             await ctx.send(f"ok renamed {original_name}.db to {new_name}.db, pls use /connect_database again if connected to the old database")
         except Exception as e:
             await ctx.send(e)
 
     else:
         await ctx.send("um pls provide both names")
+
+@client.hybrid_command(description="backups a database into another. uncommitted changes will be discarded.")
+async def backup_database(ctx, source:str, target:str):
+    if source and target:
+        source_connection = sqlite3.connect(get_database_path(source))
+        target_connection = sqlite3.connect(get_database_path(target))
+
+        source_connection.backup(target_connection)
+
+        source_connection.close()
+        target_connection.close()
+
+        await ctx.send(f"backupped {source}.db to {target}.db")
 
 
 bot_id_list = [1186326404267266059, 839794863591260182, 944245571714170930, 1396935480284680334, 1414634216292876308]

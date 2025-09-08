@@ -10,6 +10,7 @@ pou is a discord bot to interact with databases and run SQL commands. it is desi
 - list all databases (/list_databases)
 - delete databases (/delete_database)
 - rename databases (/rename_database)
+- backup databases (/backup_database)
 - run SQL commands (/exec_command)
 - commit transactions (/commit_changes)
 - rollback transactions (/rollback_changes)
@@ -51,3 +52,4 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 
 - [x] delete/rename databases
 - [ ] transactions
+- [ ] backup databases
