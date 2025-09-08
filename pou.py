@@ -43,6 +43,7 @@ async def connect_database(ctx, database:str):
     app_commands.Choice(name="true", value="true"),
     app_commands.Choice(name="false", value="false")
 ])
+@app_commands.describe(commit="whether to commit all unsaved changes in the transaction")
 async def exec_command(ctx, *, command:str, commit:str="false"):
     response = db_cursor.execute(command)
 
