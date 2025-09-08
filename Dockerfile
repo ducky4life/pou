@@ -1,6 +1,6 @@
 FROM arm64v8/python:3.11-slim
 
-LABEL org.opencontainers.image.source="https://github.com/ducky4life/smortie"
+LABEL org.opencontainers.image.source="https://github.com/ducky4life/pou"
 
 COPY requirements.txt /
 
