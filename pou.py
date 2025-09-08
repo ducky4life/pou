@@ -76,6 +76,10 @@ async def on_message(message: discord.Message):
     elif message.author.id not in bot_id_list:
         if "shun" in message.content.lower():
             await message.channel.send("shun abooz mi")
+        if "😔" in message.content.lower() or "sadege" in message.content.lower():
+            await message.channel.send("firs tim meh")
+        if "pou:" in message.content.lower():
+            await message.channel.send("i wonder y")
 
 
 keep_alive.keep_alive()
