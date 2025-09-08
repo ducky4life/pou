@@ -50,10 +50,15 @@ async def exec_command(ctx, *, command:str, commit:str="false"):
     await ctx.send(f"executing: `{command}`")
     await ctx.send(f"```{msg}```")
 
-@client.hybrid_command(description="commit all changes in the current transactions")
+@client.hybrid_command(description="commit all changes in the current transaction")
 async def commit_changes(ctx):
     db_connection.commit()
     await ctx.send("changes committed")
+
+@client.hybrid_command(description="rollbacks all changes in the current transaction")
+async def rollback_changes(ctx):
+    db_connection.rollback()
+    await ctx.send("changes rollbacked")
 
 @client.hybrid_command(description="list all databases")
 async def list_databases(ctx):
