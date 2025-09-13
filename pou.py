@@ -125,6 +125,10 @@ async def on_message(message: discord.Message):
             await message.channel.send("i wonder y")
         if "💩" in message.content.lower():
             await message.channel.send("(the real one TM)")
+        if "love pou" in message.content.lower() or "pou so cut" in message.content.lower():
+            await message.channel.send("firs tim woh")
+        if "i wonder y" in message.content.lower():
+            await message.channel.send("i wonder y tu")
 
 @client.event
 async def on_command_error(ctx, error):
