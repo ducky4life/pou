@@ -121,7 +121,7 @@ async def on_message(message: discord.Message):
         if "shun" in message.content.lower():
             global shun_counter
             shun_counter = shun_counter + 1
-            await message.channel.send(f"shun abooz mi {shun_counter} times")
+            await message.channel.send(f"shun abooz mi {shun_counter} tim")
         if "😔" in message.content.lower() or "sadege" in message.content.lower():
             await message.channel.send("firs tim meh")
         if "pou:" in message.content.lower():
