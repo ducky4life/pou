@@ -110,6 +110,7 @@ async def backup_database(ctx, source:str, target:str):
 
 
 bot_id_list = [1186326404267266059, 839794863591260182, 944245571714170930, 1396935480284680334, 1414634216292876308]
+shun_counter = 0
 
 @client.event
 async def on_message(message: discord.Message):
@@ -118,7 +119,9 @@ async def on_message(message: discord.Message):
         return
     elif message.author.id not in bot_id_list:
         if "shun" in message.content.lower():
-            await message.channel.send("shun abooz mi")
+            global shun_counter
+            shun_counter = shun_counter + 1
+            await message.channel.send(f"shun abooz mi {shun_counter} times")
         if "😔" in message.content.lower() or "sadege" in message.content.lower():
             await message.channel.send("firs tim meh")
         if "pou:" in message.content.lower():
