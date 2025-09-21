@@ -109,6 +109,8 @@ async def backup_database(ctx, source:str, target:str):
         await ctx.send(f"backupped {source}.db to {target}.db")
 
 
+# silly stuff
+
 bot_id_list = [1186326404267266059, 839794863591260182, 944245571714170930, 1396935480284680334, 1414634216292876308]
 shun_counter = 0
 
@@ -132,6 +134,18 @@ async def on_message(message: discord.Message):
             await message.channel.send("firs tim woh")
         if "i wonder y" in message.content.lower():
             await message.channel.send("i wonder y tu")
+
+@client.hybrid_command(description="shun abooz tims")
+async def get_shun_abooz(ctx):
+    global shun_counter
+    await ctx.send(f"shun abooz mi {shun_counter} tim")
+
+@client.hybrid_command(description="set shun abooz tim")
+async def abooz_pou(ctx, tim:str="1")
+    global shun_counter
+    original = shun_counter
+    shun_counter = int(tim)
+    await ctx.send(f"shun abooz mi from {original} tim to {shun_counter} tim")
 
 @client.event
 async def on_command_error(ctx, error):
