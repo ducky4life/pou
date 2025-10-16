@@ -143,7 +143,7 @@ async def get_shun_abooz(ctx):
     await ctx.send(f"shun abooz mi {shun_counter} tim")
 
 @client.hybrid_command(description="set shun abooz tim")
-async def abooz_pou(ctx, tim:str="1")
+async def abooz_pou(ctx, tim:str="1"):
     global shun_counter
     original = shun_counter
     shun_counter = int(tim)
