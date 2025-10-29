@@ -52,8 +52,7 @@ async def exec_command(ctx, *, command:str, commit:str="false"):
 
     msg = str(response.fetchall())
 
-    await ctx.send(f"executing: `{command}`")
-    await ctx.send(f"```{msg}```")
+    await ctx.send(f"executing: `{command}`\nresponse:\n```{msg}```")
 
 @client.hybrid_command(description="commit all changes in the current transaction")
 async def commit_changes(ctx):
